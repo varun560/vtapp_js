@@ -1,0 +1,12 @@
+
+<% include partials/header %>
+       <h1>List of polls</h1>
+       <a href="/new" class="ui blue button">Add a new one</a>
+       <%polls.forEach(function(poll){ %>
+    
+    <p>
+        <a href="/pollshow/<%=poll._id%>/edit"><h3><%=poll.name%></h3></a>
+    </p>
+   
+<%  });   %>
+<% include partials/footer %>

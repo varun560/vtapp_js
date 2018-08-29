@@ -1,0 +1,10 @@
+<% include partials/header %>
+<h1>New Poll</h1>
+<form action="/" method="POST">
+    <input type="text" name="name" placeholder="name">
+    <textarea name="options" rows="20" maxlength="500" required></textarea>
+    <button>Submit!</button>    
+
+</form>
+<a href="/">Go Back</a>
+<% include partials/footer %>

@@ -1,0 +1,19 @@
+<% include partials/header %>
+<h1><%=poll.name%></h1>
+<form action="/pollshow/<%=poll._id%>?_method=PUT" method="POST">
+ <select name="choice">
+ <%poll.options.forEach(function(option){%>
+ <option value="<%=option.key%>"><%=option.key%>:<%=option.userlist.length%></option>          
+           <%  });   %>
+           
+  
+ </select>
+       
+ 
+ 
+ 
+ <button class="positive medium ui button">Submit!</button>
+ 
+</form>
+<% include partials/footer %>
+ 
