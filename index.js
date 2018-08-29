@@ -10,7 +10,8 @@ var LocalStrategy         = require("passport-local");
 var passportLocalMongoose = require("passport-local-mongoose");
 var seedDB=                 require("./seeds");
 app.use(express.static(__dirname + "/public"));
-mongoose.connect("mongodb://localhost/vtapp");
+// mongoose.connect("mongodb://localhost/vtapp");
+mongoose.connect("mongodb://varun560:vj20211999@ds135952.mlab.com:35952/vtappjs")
 seedDB();
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine","ejs");
