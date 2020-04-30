@@ -1,19 +1,27 @@
 <% include partials/header %>
 <h1><%=poll.name%></h1>
 <form action="/pollshow/<%=poll._id%>?_method=PUT" method="POST">
- <select name="choice">
+<div>
+ <select id="dropdown" name="choice">
  <%poll.options.forEach(function(option){%>
  <option value="<%=option.key%>"><%=option.key%>:<%=option.userlist.length%></option>          
            <%  });   %>
-           
-  
  </select>
-       
- 
- 
- 
- <button class="positive medium ui button">Submit!</button>
- 
+</div>
+<div>
+ <button class="positive huge ui button">Submit!</button>
+ </div>
+ <div style="margin-top: 15px;">
+    <%poll.options.forEach(function(option){%>
+      <%=option.key  %>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="70"
+            aria-valuemin="0" aria-valuemax="100" style="width:<%=(option.userlist.length==0)?0:(option.userlist.length/poll.votelist.length)*100%>%">
+              <%= option.userlist.length %> votes
+            </div>
+          </div>
+    <%  });   %>
+ </div>
 </form>
 <% include partials/footer %>
  

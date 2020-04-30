@@ -12,7 +12,7 @@ var seedDB=                 require("./seeds");
 app.use(express.static(__dirname + "/public"));
 // mongoose.connect("mongodb://localhost/vtapp");
 mongoose.connect("mongodb://varun560:vj20211999@ds135952.mlab.com:35952/vtappjs")
-seedDB();
+ seedDB();
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine","ejs");
 app.use(methodOverride("_method"));
@@ -60,7 +60,7 @@ app.get("/",function(req,res){
 app.post("/",isLoggedIn,function(req,res){
     var name=req.body.name;
     var text=req.body.options;
-    var arrops=text.split("\n");
+    var arrops=text.split("\r\n");
     var newpoll={name:name,options:[]};
     arrops.forEach(function(opt){
         newpoll.options.push({key:opt,userlist:[]});
@@ -70,6 +70,7 @@ app.post("/",isLoggedIn,function(req,res){
             console.log(err);
         }
         else {
+             newp.save();
              res.redirect("/");
         }
         
@@ -106,13 +107,13 @@ app.put("/pollshow/:id",isLoggedIn,function(req,res){
             if(found.votelist.indexOf(req.user._id)==-1)
             {found.options.forEach(function(option){
                  if(option.key==req.body.choice){
-                option.userlist.push(req.user._id);
-                found.votelist.push(req.user._id);
-                found.save(function(err){
+                    option.userlist.push(req.user._id);
+                    found.votelist.push(req.user._id);
+                    found.save(function(err){
                     if(err){console.log(err);}
-                });
+                    });
                  }
-                 });
+            });
         res.redirect("/pollshow/"+req.params.id+'/edit');}
         else{
             res.redirect("/");
@@ -161,7 +162,7 @@ app.get("/logout", function(req, res){
 });
 
 
-
-app.listen(process.env.PORT,process.env.IP,function(){
+port=process.env.PORT || 3000;
+app.listen(port,function(){
     console.log("Application is running");
 });

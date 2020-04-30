@@ -1,12 +1,21 @@
 
 <% include partials/header %>
-       <h1>List of polls</h1>
-       <a href="/new" class="ui blue button">Add a new one</a>
-       <%polls.forEach(function(poll){ %>
+<div class="ui tertiary inverted teal segment" id="mainlist">
+    <div class="ui grid">
+        <div class="left floated eight wide column">
+            <h1 id="heading">List of all polls</h1>
+        </div>
+        <div class="right floated two wide column"> 
+            <a href="/new" class="ui big blue button">Add a new Poll</a>
+        </div>
+    </div>
     
-    <p>
+       <%polls.forEach(function(poll){ %>
+    <div class="ui orange segment" id="pollitem">
         <a href="/pollshow/<%=poll._id%>/edit"><h3><%=poll.name%></h3></a>
-    </p>
+    </div>
    
-<%  });   %>
+    <%  });   %>
+    
+</div>
 <% include partials/footer %>

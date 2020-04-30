@@ -1,8 +1,15 @@
 <% include partials/header %>
-<h1>Login!</h1>
-<form action="/login" method="POST">
-    <input type="text" name="username" placeholder="username">
-    <input type="password" name="password" placeholder="password">
-    <input type="submit" value="Login!">
-</form>
+<div class="ui center aligned container" id="formbox"> 
+<h1>Login to your account</h1>
+<div class="ui big form">
+    <form action="/login" method="POST">
+        <div class="field" id="regfield">
+            <input type="text" name="username" placeholder="username">
+        </div>
+        <div class="field" id="regfield">
+            <input type="password" name="password" placeholder="password">
+        </div>    
+        <button class="big positive ui button">Login</button>
+    </form>
+</div>
 <% include partials/footer %>

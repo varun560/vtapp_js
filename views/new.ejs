@@ -1,10 +1,23 @@
 <% include partials/header %>
-<h1>New Poll</h1>
+<h1 >Add a New Poll</h1>
 <form action="/" method="POST">
-    <input type="text" name="name" placeholder="name">
-    <textarea name="options" rows="20" maxlength="500" required></textarea>
-    <button>Submit!</button>    
-
+<div class="ui segments">
+    <div class="ui segment">   
+        <div class=" ui fluid large input focus ">
+        <input class="newpclass" type="text" name="name" placeholder="Write a description of the topic">
+        </div>
+    </div>
+    <div class="ui segment">
+        <div>
+        <textarea  class="newpclass" name="options" rows="20" maxlength="500" placeholder=" Write all your options row by row"required></textarea>
+    </div>
+    </div>
+        <div class="ui segment">
+        <button class="huge positive ui button">Submit!</button>    
+    </div>
+    </div>
 </form>
-<a href="/">Go Back</a>
+<div class="ui segment">
+<i class="arrow left icon"></i><a href="/">Go Back</a>
+</div>
 <% include partials/footer %>
